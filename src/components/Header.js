@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/header.css";
+import { Edit } from "./Edit";
 
 class Header extends React.Component {
     constructor() {
@@ -27,28 +28,23 @@ class Header extends React.Component {
     }
 
     render() {
-        const {name, email, number} = this.state;
-        if (!this.state.isEditing) {
-            return (
-                <>
-                    <div className="header">
-                        <div>{name}</div>
-                        <div>{email}</div>
-                        <div>{number}</div>
-                        <button className="editButton" onClick={this.handleEdit}>Edit</button>
-                    </div>
-                </>
-            );
-        } else {
-            return (
-                <div className="editInterface">
+        const {name, email, number, isEditing} = this.state;
+        return (
+            <>
+                <div className="header">
+                    <div>{name}</div>
+                    <div>{email}</div>
+                    <div>{number}</div>
+                    <button className="editButton" onClick={this.handleEdit}>Edit</button>
+                </div>
+                <Edit isEditing={isEditing}>
                     <input type="text" name="name" onChange={this.handleEdit} value={name} placeholder="Name"></input>
                     <input type="text" name="email" onChange={this.handleEdit} value={email} placeholder="Email"></input>
                     <input type="text" name="number" onChange={this.handleEdit} value={number} placeholder="Phone Number"></input>
                     <button className="saveButton" onClick={this.handleSave}>Save</button>
-                </div>
-            )
-        }
+                </Edit>
+            </>
+        );
     }
 }
 
