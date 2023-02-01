@@ -32,9 +32,11 @@ class Header extends React.Component {
         return (
             <>
                 <div className="header">
-                    <div>{name}</div>
-                    <div>{email}</div>
-                    <div>{number}</div>
+                    <div className="name">{name}</div>
+                    <div>
+                        <div className="email">{email}</div>
+                        <div className="number">{number}</div>
+                    </div>
                     <button className="editButton" onClick={this.handleEdit}>Edit</button>
                 </div>
                 <Edit isEditing={isEditing}>
