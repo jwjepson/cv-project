@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/header.css";
 import { Edit } from "./Edit";
+import { Sections } from "./Sections";
 
 class Education extends React.Component {
     constructor() {
@@ -32,12 +33,13 @@ class Education extends React.Component {
         const {schoolName, degree, fieldOfStudy, year, isEditing} = this.state;
         return (
             <>
+                <Sections title="Education" handleEdit={this.handleEdit}/>
                 <div className="education">
-                    <div>{schoolName}</div>
-                    <div>{degree}</div>
-                    <div>{fieldOfStudy}</div>
-                    <div>{year}</div>
-                    <button className="editButton" onClick={this.handleEdit}>Edit</button>
+                    <div>
+                        <div className="schoolName">{schoolName}</div>
+                        <div>{degree}, {fieldOfStudy}</div>
+                        <div>{year}</div>
+                    </div>
                 </div>
                 <Edit isEditing={isEditing}>
                     <input type="text" name="schoolName" onChange={this.handleEdit} value={schoolName} placeholder="School Name"></input>
