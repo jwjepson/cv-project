@@ -36,16 +36,54 @@
     cursor: pointer;
 }
 
-.header, .education {
+.header {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
-    background-color: pink;
-    padding: 15px;
+    justify-content: center;
+    gap: 10px;
+    background-color:#e5e4e2;
     font-size: 20px;
     position: relative;
+    height: 100px;
 }
+
+.schoolName {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.sectionHeader {
+    background-color: #e5e4e2;
+    padding: 5px;
+    display: flex;
+    margin-top: 5px;
+    justify-content: space-between;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.education {
+    padding: 10px;
+    position: relative;
+}
+
+.education > div {
+    padding-left: 10px;
+}
+
+.name {
+    font-size: 35px;
+}
+
+.header > div:nth-child(2) {
+    display: flex;
+    gap: 20px;
+}
+
 
 .editButton {
     position: absolute;
@@ -54,6 +92,16 @@
     padding: 5px;
     margin: 5px;
     width: 50px;
+}
+
+.sectionEditButton {
+    height: 25px;
+}
+
+.editButton.section {
+    position: absolute;
+    top: 20%;
+    right: 2%;
 }
 
 .editButton:hover {
