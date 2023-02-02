@@ -2,7 +2,7 @@ import React from "react"
 
 class Overview extends React.Component {
     render() {
-        const {jobs, onDelete} = this.props;
+        const {jobs, onDelete, onEdit} = this.props;
         const reversedJobs = jobs.slice().reverse();
         console.log(jobs);
         return (
@@ -18,7 +18,7 @@ class Overview extends React.Component {
                         </div>
                         <div className="jobButtons">
                             <button value={job.id} onClick={onDelete}>Delete</button>
-                            <button value={job.id}>Edit</button>
+                            <button value={job.id} onClick={onEdit}>Edit</button>
                         </div>
                     </div>
                 )
