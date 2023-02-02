@@ -6,7 +6,7 @@ class Sections extends React.Component {
         return(
             <div className="sectionHeader">
                 <h2>{title}</h2>
-                <button onClick={handleAdd} className="sectionEditButton">Add {title}</button>
+                <button onClick={handleAdd} className="sectionAddButton">Add {title}</button>
             </div>
         )
     }
