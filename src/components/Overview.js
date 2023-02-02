@@ -2,29 +2,58 @@ import React from "react"
 
 class Overview extends React.Component {
     render() {
-        const {jobs, onDelete, onEdit} = this.props;
-        const reversedJobs = jobs.slice().reverse();
-        console.log(jobs);
-        return (
-            <>
-            {reversedJobs.map((job) => {
-                return (
-                    <div key={job.id} className="job">
-                        <div>
-                            <div className="companyName">{job.company}</div>
-                            <div>{job.position}</div>
-                            <div>{job.tasks}</div>
-                            <div>{job.startDate} {job.endDate}</div>
+        const {data, onDelete, onEdit, section} = this.props;
+        const reversedData = data.slice().reverse();
+
+        if (data.length === 0) {
+            return (
+                <div>No {section} information available.</div>
+            )
+        }
+
+        if (section === "Experience") {
+            return (
+                <>
+                {reversedData.map((data) => {
+                    return (
+                        <div key={data.id} className="job">
+                            <div>
+                                <div className="companyName">{data.company}</div>
+                                <div>{data.position}</div>
+                                <div>{data.tasks}</div>
+                                <div>{data.startDate} {data.endDate}</div>
+                            </div>
+                            <div className="jobButtons">
+                                <button value={data.id} onClick={onDelete}>Delete</button>
+                                <button value={data.id} onClick={onEdit}>Edit</button>
+                            </div>
                         </div>
-                        <div className="jobButtons">
-                            <button value={job.id} onClick={onDelete}>Delete</button>
-                            <button value={job.id} onClick={onEdit}>Edit</button>
+                    )
+                })}
+                </>
+            )
+        } else {
+            return (
+                <>
+                {reversedData.map((data) => {
+                    return (
+                        <div key={data.id} className="job">
+                            <div>
+                                <div className="companyName">{data.name}</div>
+                                <div>{data.degree}</div>
+                                <div>{data.field}</div>
+                                <div>{data.startDate} {data.endDate}</div>
+                            </div>
+                            <div className="jobButtons">
+                                <button value={data.id} onClick={onDelete}>Delete</button>
+                                <button value={data.id} onClick={onEdit}>Edit</button>
+                            </div>
                         </div>
-                    </div>
-                )
-            })}
-            </>
-        )
+                    )
+                })}
+                </>
+            )
+        }
     }
 }
 
