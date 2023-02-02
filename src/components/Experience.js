@@ -126,7 +126,7 @@ class Experience extends React.Component {
                         <button className="saveButton" onClick={this.saveEdit}>Edit</button>
                     </Edit>
                 )}
-                <Overview onDelete={this.onDelete} onEdit={this.onEdit} jobs={jobs}/>
+                <Overview onDelete={this.onDelete} onEdit={this.onEdit} data={jobs} section="Experience"/>
             </>
         )
     }
