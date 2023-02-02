@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./components/Header";
 import { Education } from "./components/Education";
+import { Experience } from "./components/Experience";
 
 class App extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class App extends React.Component {
       <>
         <Header/>
         <Education/>
+        <Experience/>
       </>
     );
   }
