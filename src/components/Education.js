@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/header.css";
-import { Edit } from "./Edit";
+import { Add } from "./Add";
 import { Sections } from "./Sections";
 
 class Education extends React.Component {
@@ -12,28 +12,28 @@ class Education extends React.Component {
             degree: "Bachelors",
             fieldOfStudy: "Psychology",
             year: "2019",
-            isEditing: false,
+            isAdding: false,
         }
     }
 
-    handleEdit = (e) => {
+    handleAdd = (e) => {
         this.setState({
-            isEditing: true,
+            isAdding: true,
             [e.target.name]: e.target.value,
         });
     }
 
     handleSave = (e) => {
         this.setState({
-            isEditing: false,
+            isAdding: false,
         });
     }
 
     render() {
-        const {schoolName, degree, fieldOfStudy, year, isEditing} = this.state;
+        const {schoolName, degree, fieldOfStudy, year, isAdding} = this.state;
         return (
             <>
-                <Sections title="Education" handleEdit={this.handleEdit}/>
+                <Sections title="Education" handleAdd={this.handleAdd}/>
                 <div className="education">
                     <div>
                         <div className="schoolName">{schoolName}</div>
@@ -41,13 +41,13 @@ class Education extends React.Component {
                         <div>{year}</div>
                     </div>
                 </div>
-                <Edit isEditing={isEditing}>
-                    <input type="text" name="schoolName" onChange={this.handleEdit} value={schoolName} placeholder="School Name"></input>
-                    <input type="text" name="degree" onChange={this.handleEdit} value={degree} placeholder="Degree Type"></input>
-                    <input type="text" name="fieldOfStudy" onChange={this.handleEdit} value={fieldOfStudy} placeholder="Field of Study"></input>
-                    <input type="text" name="year" onChange={this.handleEdit} value={year} placeholder="Year"></input>
+                <Add isAdding={isAdding}>
+                    <input type="text" name="schoolName" onChange={this.handleAdd} value={schoolName} placeholder="School Name"></input>
+                    <input type="text" name="degree" onChange={this.handleAdd} value={degree} placeholder="Degree Type"></input>
+                    <input type="text" name="fieldOfStudy" onChange={this.handleAdd} value={fieldOfStudy} placeholder="Field of Study"></input>
+                    <input type="text" name="year" onChange={this.handleAdd} value={year} placeholder="Year"></input>
                     <button className="saveButton" onClick={this.handleSave}>Save</button>
-                </Edit>
+                </Add>
             </>
         );
     };
