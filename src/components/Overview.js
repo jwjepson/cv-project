@@ -7,7 +7,7 @@ class Overview extends React.Component {
 
         if (data.length === 0) {
             return (
-                <div>No {section} information available.</div>
+                <div className="job">No {section} information available.</div>
             )
         }
 
@@ -23,7 +23,7 @@ class Overview extends React.Component {
                                 <div>{data.tasks}</div>
                                 <div>{data.startDate} {data.endDate}</div>
                             </div>
-                            <div className="jobButtons">
+                            <div className="dataButtons">
                                 <button value={data.id} onClick={onDelete}>Delete</button>
                                 <button value={data.id} onClick={onEdit}>Edit</button>
                             </div>
@@ -44,7 +44,7 @@ class Overview extends React.Component {
                                 <div>{data.field}</div>
                                 <div>{data.startDate} {data.endDate}</div>
                             </div>
-                            <div className="jobButtons">
+                            <div className="dataButtons">
                                 <button value={data.id} onClick={onDelete}>Delete</button>
                                 <button value={data.id} onClick={onEdit}>Edit</button>
                             </div>
