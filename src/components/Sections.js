@@ -2,12 +2,11 @@ import React from "react";
 
 class Sections extends React.Component {
     render() {
-        const {title, handleEdit} = this.props;     
+        const {title, handleAdd} = this.props;     
         return(
             <div className="sectionHeader">
                 <h2>{title}</h2>
-                <button onClick={handleEdit} className="sectionEditButton">Add {title}</button>
-                <button>Edit</button>
+                <button onClick={handleAdd} className="sectionEditButton">Add {title}</button>
             </div>
         )
     }
