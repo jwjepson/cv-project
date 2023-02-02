@@ -53,12 +53,23 @@
     font-weight: bolder;
 }
 
-.sectionHeader {
+.sectionHeader, .experienceHeader {
     background-color: #e5e4e2;
     padding: 5px;
     display: flex;
     margin-top: 5px;
-    justify-content: space-between;
+}
+
+.job {
+    display: flex;
+    gap: 25px;
+
+}
+
+.jobButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 h2 {
@@ -69,6 +80,11 @@ h2 {
 .education {
     padding: 10px;
     position: relative;
+}
+
+.companyName {
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .education > div {
