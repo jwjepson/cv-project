@@ -1,3 +1,10 @@
+body {
+    background-color: #4169E1;
+    margin: 0;
+    padding: 40px;
+}
+
+
 .editInterface {
     display: flex;
     flex-direction: column;
@@ -53,17 +60,58 @@
     font-weight: bolder;
 }
 
-.sectionHeader, .experienceHeader {
+.sectionHeader {
     background-color: #e5e4e2;
     padding: 5px;
     display: flex;
-    margin-top: 5px;
+    padding-top: 15px;
+    padding-left: 8px;
 }
 
 .job {
     display: flex;
-    gap: 25px;
+    background-color:#e7e7e7;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
 
+.job:hover .dataButtons > button {
+    display: inline-block;
+}
+
+.job:hover {
+    cursor: pointer;
+}
+
+.sectionAddButton {
+    margin-left: 15px;
+    border-radius: 1rem;
+    border: none;
+    background-color: tomato;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.sectionAddButton:hover, .dataButtons > button:hover {
+    cursor: pointer;
+}
+
+.dataButtons > button {
+    border-radius: 1rem;
+    margin-left: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 9px;
+    display: none;
+}
+
+.dataButtons {
+    display: flex;
 }
 
 .jobButtons {
