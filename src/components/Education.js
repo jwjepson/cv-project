@@ -1,56 +1,135 @@
 import React from "react";
-import "../styles/header.css";
-import { Add } from "./Add";
 import { Sections } from "./Sections";
+import { Add } from "./Add";
+import {Overview} from "./Overview";
+import uniqid from "uniqid"
+import {Edit} from "./Edit";
 
 class Education extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            schoolName: "School Name",
-            degree: "Bachelors",
-            fieldOfStudy: "Psychology",
-            year: "2019",
+            school: {
+                name: "",
+                degree: "",
+                field: "",
+                startDate: "",
+                endDate: "",
+                id: uniqid(),
+            },
             isAdding: false,
+            isEditing: false,
+            schools: [],
         }
     }
 
-    handleAdd = (e) => {
+    onChange = (e) => {
+        if (this.state.isEditing) {
+            this.setState({
+                school: {
+                    ...this.state.school,
+                    [e.target.name]: e.target.value,
+                },
+            });
+        } else {
+            this.setState({
+                isAdding: true,
+                school: {
+                    ...this.state.school,
+                    [e.target.name]: e.target.value,
+                },
+            });
+        }
+    }
+
+    onDelete = (e) => {
+        let newArray = this.state.schools.filter((school) => {
+            return school.id !== e.target.value;
+        });
         this.setState({
-            isAdding: true,
-            [e.target.name]: e.target.value,
+            schools: [...newArray],
+        })
+    }
+
+    onEdit = (e) => {
+        let selectedSchool = this.state.schools.find((school) => {
+            return school.id === e.target.value;
+        });
+
+        this.setState({
+            school: selectedSchool,
+            isEditing: true,
         });
     }
 
-    handleSave = (e) => {
+    addSchool = (e) => {
         this.setState({
+            schools: this.state.schools.concat(this.state.school),
+            school: {
+                name: "",
+                degree: "",
+                field: "",
+                startDate: "",
+                endDate: "",
+                id: uniqid(),
+            },
             isAdding: false,
+        });
+    }
+
+    saveEdit = (e) => {
+        let newArray = this.state.schools.map((school) => {
+            if (school.id === this.state.school.id) {
+                return this.state.school;
+            }
+            return school;
+        });
+
+        this.setState({
+            schools: [...newArray],
+            isEditing: false,
+            school: {
+                name: "",
+                degree: "",
+                field: "",
+                startDate: "",
+                endDate: "",
+                id: uniqid(),
+            }
         });
     }
 
     render() {
-        const {schoolName, degree, fieldOfStudy, year, isAdding} = this.state;
+        const {name, degree, field, startDate, endDate} = this.state.school;
+        const {isAdding, schools, isEditing} = this.state;
         return (
             <>
-                <Sections title="Education" handleAdd={this.handleAdd}/>
-                <div className="education">
-                    <div>
-                        <div className="schoolName">{schoolName}</div>
-                        <div>{degree}, {fieldOfStudy}</div>
-                        <div>{year}</div>
-                    </div>
-                </div>
-                <Add isAdding={isAdding}>
-                    <input type="text" name="schoolName" onChange={this.handleAdd} value={schoolName} placeholder="School Name"></input>
-                    <input type="text" name="degree" onChange={this.handleAdd} value={degree} placeholder="Degree Type"></input>
-                    <input type="text" name="fieldOfStudy" onChange={this.handleAdd} value={fieldOfStudy} placeholder="Field of Study"></input>
-                    <input type="text" name="year" onChange={this.handleAdd} value={year} placeholder="Year"></input>
-                    <button className="saveButton" onClick={this.handleSave}>Save</button>
-                </Add>
+                <Sections title="Education" handleAdd={this.onChange}/>
+                {isAdding && (
+                    <Add isAdding={isAdding}>
+                        <input type="text" name="name" onChange={this.onChange} value={name} placeholder="School Name"></input>
+                        <input type="text" name="degree" onChange={this.onChange} value={degree} placeholder="Degree"></input>
+                        <input type="text" name="field" onChange={this.onChange} value={field} placeholder="Field of Study"></input>
+                        <input type="text" name="startDate" onChange={this.onChange} value={startDate} placeholder="Start Date"></input>
+                        <input type="text" name="endDate" onChange={this.onChange} value={endDate} placeholder="End Date"></input>
+                        <button className="saveButton" onClick={this.addSchool}>Add</button>
+                    </Add>
+                )}
+                {isEditing && (
+                    <Edit isEditing={isEditing}>
+                        <input type="text" name="name" onChange={this.onChange} value={name} placeholder="School Name"></input>
+                        <input type="text" name="degree" onChange={this.onChange} value={degree} placeholder="Degree"></input>
+                        <input type="text" name="field" onChange={this.onChange} value={field} placeholder="Field of Study"></input>
+                        <input type="text" name="startDate" onChange={this.onChange} value={startDate} placeholder="Start Date"></input>
+                        <input type="text" name="endDate" onChange={this.onChange} value={endDate} placeholder="End Date"></input>
+                        <button className="saveButton" onClick={this.saveEdit}>Edit</button>
+                    </Edit>
+                )}
+                <Overview onDelete={this.onDelete} onEdit={this.onEdit} data={schools} section="Education"/>
             </>
-        );
-    };
-};
+        )
+    }
+}
 
 export {Education}
