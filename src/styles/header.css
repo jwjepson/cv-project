@@ -18,6 +18,12 @@ body {
     z-index: 1;
 }
 
+textarea {
+    width: 187px;
+    height: 137px;
+    resize: none;
+}
+
 .editPopup {
     display: flex;
     justify-content: center;
