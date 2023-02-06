@@ -110,7 +110,7 @@ class Experience extends React.Component {
                     <Add isAdding={isAdding}>
                         <input type="text" name="company" onChange={this.onChange} value={company} placeholder="Company Name"></input>
                         <input type="text" name="position" onChange={this.onChange} value={position} placeholder="Position Title"></input>
-                        <input type="text" name="tasks" onChange={this.onChange} value={tasks} placeholder="Tasks"></input>
+                        <textarea name="tasks" onChange={this.onChange} value={tasks} placeholder="Tasks"></textarea>
                         <input type="text" name="startDate" onChange={this.onChange} value={startDate} placeholder="Start Date"></input>
                         <input type="text" name="endDate" onChange={this.onChange} value={endDate} placeholder="End Date"></input>
                         <button className="saveButton" onClick={this.addJob}>Add</button>
@@ -120,7 +120,7 @@ class Experience extends React.Component {
                     <Edit isEditing={isEditing}>
                         <input type="text" name="company" onChange={this.onChange} value={company} placeholder="Company Name"></input>
                         <input type="text" name="position" onChange={this.onChange} value={position} placeholder="Position Title"></input>
-                        <input type="text" name="tasks" onChange={this.onChange} value={tasks} placeholder="Tasks"></input>
+                        <textarea name="tasks" onChange={this.onChange} value={tasks} placeholder="Tasks"></textarea>
                         <input type="text" name="startDate" onChange={this.onChange} value={startDate} placeholder="Start Date"></input>
                         <input type="text" name="endDate" onChange={this.onChange} value={endDate} placeholder="End Date"></input>
                         <button className="saveButton" onClick={this.saveEdit}>Edit</button>
